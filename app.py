@@ -19,17 +19,17 @@ import pandas as pd
 import pickle
 import quantities as pq
 specimen_id = 325479788
-def test_opt_relative_diff(specimen_id,model_type = "ADEXP",efel_filter_iterable=None):
+def test_opt_relative_diff(specimen_id,model_type = "ADEXP",efel_filter_iterable=None,MU=10,NGEN=10):
     fitnesses,scores,obs_preds,opt,target,hall_of_fame,cell_evaluator = optimize_job(specimen_id,
                                                  model_type,
                                                  score_type=RelativeDifferenceScore,
-                                                 efel_filter_iterable=efel_filter_iterable)
+                                                 efel_filter_iterable=efel_filter_iterable,MU=MU,NGEN=NGEN)
     print(fitnesses)
     return obs_preds,opt,target,hall_of_fame,cell_evaluator
 
 st.markdown("""
-# An example of using BluePyOpt/NeuronUnit Optimization
-Using:
+#  BluePyOpt/NeuronUnit Optimization Application
+For Example You Can Use:
 * Allen Brain Experimental data (`specimen_id=325479788`, sweep number `64`) to derive features from.
 * EFEL feature extraction
 * BluePyOpt Optimization.
@@ -53,7 +53,6 @@ plt.title("$V_{M}$ Allen Specimen id 325479788, sweep number 64")
 st.pyplot(plt)
 
 st.markdown("""
-# Example 1
 * Izhikevich model
 * Allen specimen 325479788
 You will notice that all the features are timinig related, and some would seem redudandant. This is because one must use brute force to get a good fit, for this particular problem.
@@ -73,21 +72,21 @@ efel_filter_iterable = [
     "time_to_last_spike",
     "time_to_second_spike"
     ]
-st.markdown("""
-Which Features Do you want to Optimize?
-""")
+#options = tuple(["ADEXP","IZHI"])
+#efel_filter_iterable = st.sidebar.radio("Which model Do you want to use?", efel_filter_iterable)
 
-st.markdown("""
-Which model Do you want to use?
-""")
+options = tuple(["ADEXP","IZHI"])
+model_type = st.sidebar.radio("Which model Do you want to use?", options)
 
-st.markdown("""
-Which Data Do you want to use?
-""")
+options = tuple(["325479788","325479788"])
+specimen_id = st.sidebar.radio("Which Allen Experiment Do you want to use?", options)
 
-obs_preds,opt,target,hall_of_fame,cell_evaluator = test_opt_relative_diff(specimen_id = 325479788,model_type="IZHI",efel_filter_iterable=efel_filter_iterable)
+obs_preds,opt,target,hall_of_fame,cell_evaluator = test_opt_relative_diff(specimen_id = specimen_id,
+                                                    model_type=model_type,
+                                                    efel_filter_iterable=efel_filter_iterable,
+                                                    NGEN=200,MU=20)
 
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 st.pyplot(check_bin_vm_soma(target,opt))
 
 

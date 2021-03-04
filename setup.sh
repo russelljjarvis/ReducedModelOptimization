@@ -3,12 +3,12 @@
 #
 # download and install latest geckodriver for linux or mac.
 # required for selenium to drive a firefox browser.
-sudo apt-get update
+#sudo apt-get update
 sudo python3 -m pip install seaborn
 
 apt-get install -y cpp gcc
-apt-get install -y libx11-6 python-dev git build-essential
-apt-get install -y autoconf automake gcc g++ make gfortran
+#apt-get install -y libx11-6 python-dev git build-essential
+#apt-get install -y autoconf automake gcc g++ make gfortran
 apt-get install -y python-tables
 apt-get install -y libhdf5-serial-dev
 
@@ -17,27 +17,24 @@ conda config --set always_yes true
 conda config --set quiet true
 conda install conda-build
 pip install pip --upgrade;
-sudo python3 -m pip install -r requirements.txt
+sudo python -m pip install -r requirements.txt
+pip install -e .
 
 conda install numpy;
 conda install numba;
 conda install dask;
 pip install tables
 pip install scipy==1.5.4
-#pip install coverage
 pip install cython
-#pip install asciiplotlib;
+pip install asciiplotlib;
 pip install ipfx
 pip install streamlit
 pip install sklearn
-pip install seaborn
 pip install frozendict
-
-# pip install plotly
+pip install plotly
 pip install allensdk==0.16.3
-pip install --upgrade colorama
-pip install -e .
-rm -rf /opt/conda/lib/python3.8/site-packages/sciunit
+#pip install --upgrade colorama
+#rm -rf /opt/conda/lib/python3.8/site-packages/sciunit
 git clone -b neuronunit https://github.com/russelljjarvis/jit_hub.git
 cd jit_hub; pip install -e .; cd ..;
 git clone -b neuronunit_reduced_cells https://github.com/russelljjarvis/BluePyOpt.git
@@ -45,10 +42,6 @@ cd BluePyOpt; pip install -e .; cd ..;
 git clone -b dev https://github.com/russelljjarvis/sciunit.git
 cd sciunit; pip install -e .; cd ..;
 pip install git+https://github.com/russelljjarvis/eFEL
-
-
-
-
 
 mkdir -p ~/.streamlit/
 echo "\
