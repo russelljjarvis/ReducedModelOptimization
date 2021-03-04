@@ -8,14 +8,14 @@ sudo python3 -m pip install -r requirements.txt
 sudo python3 -m pip install seaborn
 sudo python3 -m pip install bs4
 sudo python3 -m pip install natsort dask plotly tabulate
-sudo python3 -m conda install -c pyviz holoviews bokeh
-sudo conda install -c pyviz holoviews bokeh
-sudo python3 -m pip install git+https://github.com/pyviz/holoviews.git
+#sudo python3 -m conda install -c pyviz holoviews bokeh
+#sudo conda install -c pyviz holoviews bokeh
+#sudo python3 -m pip install git+https://github.com/pyviz/holoviews.git
 
 # hack package installs:
 
-git clone https://github.com/pyviz/holoviews.git
-cd holoviews; sudo pip install -e .; cd ..;
+#git clone https://github.com/pyviz/holoviews.git
+#cd holoviews; sudo pip install -e .; cd ..;
 
 apt-get install -y cpp gcc
 apt-get install -y libx11-6 python-dev git build-essential
@@ -49,7 +49,7 @@ rm -rf /opt/conda/lib/python3.8/site-packages/sciunit
 git clone -b neuronunit https://github.com/russelljjarvis/jit_hub.git
 cd jit_hub; pip install -e .; cd ..;
 git clone -b neuronunit_reduced_cells https://github.com/russelljjarvis/BluePyOpt.git
-cd BluePyOpt; pip install -e .
+cd BluePyOpt; pip install -e .; cd ..;
 git clone -b dev https://github.com/russelljjarvis/sciunit.git
 cd sciunit; pip install -e .; cd ..;
 pip install git+https://github.com/russelljjarvis/eFEL
