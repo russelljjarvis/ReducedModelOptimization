@@ -16,7 +16,7 @@ if str("neuronunit") in sys.path[-5]:
 #    pass
 from neuronunit.plotting.plot_utils import check_bin_vm_soma
 from neuronunit.allenapi.allen_data_driven import opt_setup
-from nb_utils import optimize_job
+from app_utils import optimize_job
 from sciunit.scores import RelativeDifferenceScore
 import pandas as pd
 import pickle
