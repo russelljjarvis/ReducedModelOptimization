@@ -8,12 +8,9 @@ import warnings
 if SILENT:
     warnings.filterwarnings("ignore")
 import sys
-#try:
 sys.path.insert(0,'/home/user/git/revitalize/neuronunit')
 if str("neuronunit") in sys.path[-5]:
     del sys.path[-5]
-#except:
-#    pass
 from neuronunit.plotting.plot_utils import check_bin_vm_soma
 from neuronunit.allenapi.allen_data_driven import opt_setup
 from app_utils import optimize_job
