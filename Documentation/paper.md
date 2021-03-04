@@ -5,6 +5,7 @@ tags:
   - reduced neuronal models
   - applied genetic algorithms
   - numba jit LLVM
+
 authors:
   - name: Russell Jarvis
     affiliation: Previous PhD Neuroscience, Arizona State University
