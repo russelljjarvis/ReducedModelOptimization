@@ -76,9 +76,19 @@ efel_filter_iterable = [
     "time_to_last_spike",
     "time_to_second_spike"
     ]
-#    "AHP_depth_abs",
+st.markdown("""
+Which Features Do you want to Optimize?
+""")
+
+st.markdown("""
+Which model Do you want to use?
+""")
+
+st.markdown("""
+Which Data Do you want to use?
+""")
+
 obs_preds,opt,target,hall_of_fame,cell_evaluator = test_opt_relative_diff(specimen_id = 325479788,model_type="IZHI",efel_filter_iterable=efel_filter_iterable)
-#"voltage_after_stim"
 
 
 st.pyplot(check_bin_vm_soma(target,opt))
