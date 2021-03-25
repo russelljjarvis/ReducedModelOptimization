@@ -1,7 +1,6 @@
 dask
 lxml==4.4.1
 elephant==0.4.1
-mock==3.0.5
 tqdm==4.48.2
 neo==0.5.2
 plotly==4.5.2
@@ -25,7 +24,7 @@ allensdk==0.16.3
 natsort==7.0.1
 nbformat==4.4.0
 quantities==0.12.4
-dask[bag]
+neuronunitopt==0.19
 fsspec>=0.3.3
 cython
 efel
