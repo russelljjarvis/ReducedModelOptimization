@@ -3,8 +3,10 @@
 #
 # download and install latest geckodriver for linux or mac.
 # required for selenium to drive a firefox browser.
-python -m pip install seaborn
-#apt-get install -y cpp gcc
+#python -m pip install seaborn
+bash reduced_cell_install.sh
+apt-get update
+apt-get install -y gcc
 apt-get install -y python-tables
 apt-get install -y libhdf5-serial-dev
 conda config --add channels conda-forge
@@ -13,20 +15,13 @@ conda config --set quiet true
 conda install conda-build
 pip install pip --upgrade;
 python -m pip install -r requirements.txt
+pip install neuronunitopt==0.19
 pip install -e .
-conda install numpy;
-conda install numba;
-conda install dask;
-pip install tables
+#conda install numpy;
+#conda install numba;
+#conda install dask;
+#pip install tables
 pip install scipy==1.5.4
-pip install cython
-pip install asciiplotlib;
-pip install ipfx
-pip install streamlit
-pip install sklearn
-pip install frozendict
-pip install plotly
-pip install allensdk==0.16.3
 git clone -b neuronunit https://github.com/russelljjarvis/jit_hub.git
 cd jit_hub; pip install -e .; cd ..;
 git clone -b neuronunit_reduced_cells https://github.com/russelljjarvis/BluePyOpt.git
