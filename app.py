@@ -7,10 +7,15 @@ SILENT = True
 import warnings
 if SILENT:
 	warnings.filterwarnings("ignore")
-import sys
-sys.path.insert(0,'/home/user/git/revitalize/neuronunit')
-if str("neuronunit") in sys.path[-5]:
-	del sys.path[-5]
+import os
+on_heroku = False
+if 'YOUR_ENV_VAR' in os.environ:
+  on_heroku = True
+if not on_heroku:
+	import sys
+	sys.path.insert(0,'/home/user/git/revitalize/neuronunit')
+	if str("neuronunit") in sys.path[-5]:#
+		del sys.path[-5]
 from neuronunit.plotting.plot_utils import check_bin_vm_soma
 from neuronunit.allenapi.allen_data_driven import opt_setup
 from app_utils import optimize_job
@@ -29,8 +34,8 @@ def test_opt_relative_diff(specimen_id,model_type = "ADEXP",efel_filter_iterable
 	#print(fitnesses)
 	return obs_preds,opt,target,hall_of_fame,cell_evaluator
 def main():
-	port = os.getenv('PORT', default=8000)
-	print(port)
+	#port = os.getenv('PORT', default=8000)
+	#print(port)
 
 	st.markdown("""
 	#  BluePyOpt/NeuronUnit Optimization Application
@@ -73,19 +78,36 @@ def main():
 		"all_ISI_values",
 		"time_to_first_spike",
 		"time_to_last_spike",
-		"time_to_second_spike"
+		"time_to_second_spike",
+		"AHP1_depth_from_peak",
+		"AHP2_depth_from_peak",
+		"AHP_depth",
+		"AHP_depth_abs",
+		"AHP_depth_abs_slow",
+		"AHP_depth_diff",
+		"AHP_depth_from_peak",
+		"AHP_slow_time",
+		"AHP_time_from_peak"
 		]
 	#options = tuple(["ADEXP","IZHI"])
-	#efel_filter_iterable = st.sidebar.radio("Which model Do you want to use?", efel_filter_iterable)
-	MU_options = tuple((10,20,30))
+	efel_filter_iterable = st.sidebar.radio("Which features do you want to fit to?", efel_filter_iterable)
+	MU_options = tuple((20,30,40,50,100,150))
 	MU = st.sidebar.radio("Which MU Do you want to use?", MU_options)
-	NGEN_options = tuple((50,100,200,300))
+	NGEN_options = tuple((100,150,200,300,400))
 	NGEN = st.sidebar.radio("Which NGEN Do you want to use?", NGEN_options)
 
 	options = tuple(["ADEXP","IZHI"])
 	model_type = st.sidebar.radio("Which model Do you want to use?", options)
-
-	options = tuple(["325479788","325479788"])
+	options = (
+		325479788,
+		324257146,
+		476053392,
+		623893177,
+		623960880,
+		482493761,
+		471819401,
+	)
+	#options = tuple(["325479788","325479788"])
 	specimen_id = st.sidebar.radio("Which Allen Experiment Do you want to use?", options)
 
 	obs_preds,opt,target,hall_of_fame,cell_evaluator = test_opt_relative_diff(specimen_id = specimen_id,
