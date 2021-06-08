@@ -17,6 +17,7 @@ backports.statistics==0.1.0
 python_dateutil
 scikit_learn==0.23.2
 frozendict==1.2
+-e git+https://github.com/russelljjarvis/neuronunit.git@optimization#egg=neuronunit
 -e git+https://github.com/russelljjarvis/sciunit.git@dev#egg=sciunit
 neo==0.5.2
 numba
