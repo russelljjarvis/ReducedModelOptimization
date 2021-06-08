@@ -1,4 +1,4 @@
-title: 'Towards Neuronal Deep Fakes: Data Driven Optimization With Genetic Algorithms'
+title: 'Reduced Non-linear Model Optimization: With Genetic Algorithms'
 
 tags:
   - data driven optimization
@@ -11,7 +11,10 @@ authors:
     affiliation: Previous PhD Neuroscience, Arizona State University
   - name: Rick Gerkin
 
-date: March 2021
+date: June 2021
+
+Although the Adaptive Exponential model and the Izhikevich equations look simple
+Non-linearity of
 
 Neuron models that behave like their biological counterparts are essential for computational neuroscience.
 Reduced neuron models, which abstract away biological mechanisms in the interest of speed and interpretability, have received much attention due to their utility in large scale simulations of the brain, but little care has been taken to ensure that these models exhibit behaviors that closely resemble real neurons.

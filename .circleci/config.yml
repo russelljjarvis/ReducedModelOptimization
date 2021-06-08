@@ -54,9 +54,13 @@ jobs:
       - run: rm -rf /opt/conda/lib/python3.8/site-packages/sciunit
       - run: git clone -b dev https://github.com/russelljjarvis/sciunit.git
       - run: cd sciunit; pip install -e .; cd ..;
-      - run: cd bluepyopt/tests; nosetests test_evaluators.py
-      - run: cd bluepyopt/tests; nosetests test_scores_unit.py
-      - run: cd bluepyopt/tests; nosetests test_rheobase_model.py
+      - run: git clone -b neuronunit_reduced_cells https://github.com/russelljjarvis/BluePyOpt.git
+      - run: pip install git+https://github.com/russelljjarvis/neuronunit.git@optimization
+
+      - run: pip install git+https://github.com/russelljjarvis/BluePyOpt.git@neuronunit_reduced_cells
+
+      - run: cd BluePyOpt/bluepyopt/tests; nosetests test_scores_unit.py
+      - run: cd BluePyOpt/bluepyopt/tests; nosetests test_rheobase_model.py
       - run: pip install tox && tox
 
       # causes time out
