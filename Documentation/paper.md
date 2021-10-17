@@ -4,7 +4,8 @@ tags:
   - data driven optimization
   - reduced neuronal models
   - applied genetic algorithms
-  - numba jit LLVM
+  - Julia
+  - Metahieuristics
 
 authors:
   - name: Russell Jarvis
